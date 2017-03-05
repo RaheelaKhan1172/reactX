@@ -44,14 +44,16 @@ interface ToDoState {
 }
 
 interface IAppStore {
-  addItem: () => void;
-  deleteItem: (event: any) => void;
+  addItem:(text:string) => void;
   editItem: (event: any) => void;
-  completedTask: (event: any) => void;
   tasksToDo: IListOfItems;
   peek: () =>  void;
   onChange: (event: any) => void;
-  previous: () => void; 
+  editing: boolean;
+  peeking: boolean;
+  task: string;
+  doneOrDelete: () => void;
+  getCurrentTask();
 }
 
 interface IToDoProps {
