@@ -7,20 +7,13 @@ export class Item extends React.Component<IItemProps, {}> {
   constructor(props: IItemProps) {
     super(props);
 
-    this.onEdit = this.onEdit.bind(this);
-  }
-
-  onEdit(event: any) {
-    this.props.onEdit(event);
   }
 
   render() {
+    console.log(this.props.value, "in item render");
     return (
       <div> 
-      { this.props.editing ? 
-        <input type="text" /> : 
-        "List" 
-      }  
+        { this.props.value }
       </div>
     );
   }

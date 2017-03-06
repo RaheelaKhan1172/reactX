@@ -5,8 +5,7 @@ interface IItem {
 }
 
 interface IItemProps {
-  editing: boolean;
-  onEdit: (event: any) => void;
+  value: string; 
 }
 
 interface IListOfItems {
@@ -15,20 +14,42 @@ interface IListOfItems {
 
 interface IInput {
   value: string;
-  name: string;
+  name?: string;
   classType?: string;
   onChange: (event: any) => void;
+}
+
+interface InputComponentProps extends IInput {
+  onCancel: () => void;
+  onSave: () => void;
 }
 
 interface IButton {
   name?: string;
   message?:string;
+  onClick?: () => void;
+}
+
+interface PeekingProps {
+  value:string;
+  message?:string;
+  name?:string;
   onClick: () => void;
+}
+
+interface MainProps extends IButton, IItemProps, IInput {
+  add: () => void;
+  edit?: () => void;
+  delete?: () => void;
+  peek?:() => void;
+  valueItem: string;
+  done: () => void;
 }
 
 interface IToDoModel {
   onAdd: () => void;
   onSave: () => void;
+  cancelEdit: () => void;
   onEdit: (event: any) => void;
   onDone: (event: any) => void;
   onDelete: (event: any) => void;
@@ -45,13 +66,15 @@ interface ToDoState {
 
 interface IAppStore {
   addItem:(text:string) => void;
-  editItem: (event: any) => void;
+  editItem: () => void;
   tasksToDo: IListOfItems;
   peek: () =>  void;
   onChange: (event: any) => void;
   editing: boolean;
   peeking: boolean;
   task: string;
+  doneEditing: () => void;
+  cancelEdit: () => void;
   doneOrDelete: () => void;
   getCurrentTask();
 }

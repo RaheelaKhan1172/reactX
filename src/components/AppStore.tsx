@@ -26,7 +26,8 @@ class AppStore implements IAppStore {
     this.task = "";
   }
 
-  @action editItem(event: any) {
+  @action editItem() {
+    this.task = this.tasksToDo.toDo[0].value;
     this.editing = true;
   }
 
@@ -39,7 +40,23 @@ class AppStore implements IAppStore {
   }
 
   @action doneOrDelete() {
-  this.tasksToDo.toDo = this.tasksToDo.toDo.slice(1,this.tasksToDo.toDo.length);
+    let newList:IListOfItems = new ListModel();
+    for (var i = 1,j = 0; i < this.tasksToDo.toDo.length;i++,j++) {
+      newList[j] = this.tasksToDo.toDo[i];
+    }
+
+    this.tasksToDo = newList;
+  }
+
+  @action doneEditing() {
+    this.tasksToDo.toDo[0].value = this.task;
+    this.task = "";
+    this.editing = false;
+  }
+
+  @action cancelEdit() {
+    this.task = "";
+    this.editing = false;
   }
 
   getCurrentTask() {
