@@ -83,10 +83,10 @@ export class ToDo extends React.Component<IToDoProps,{}> {
     if (this.props.store.peeking) {
       dataToRender = (this.props.store.tasksToDo.toDo[1]  ? 
                       <PeekingComponent value={this.props.store.tasksToDo.toDo[1].value} onClick={this.props.store.peek} message="Done" /> :
-                      <PeekingComponent value="Nothing else to do" onClick={this.props.store.peek} message="Done" />
+                      <PeekingComponent value="Nothing else to do" onClick={this.donePeeking} message="Done" />
                       );
     } else if (this.props.store.editing) {
-      dataToRender = <EditingComponent value={this.props.store.task} onChange={this.onChange} onCancel={this.cancelEdit} onSave={this.onSave} />
+      dataToRender = <EditingComponent value={this.props.store.task} onChange={this.onChange} onCancel={this.cancelEdit} peek={this.peek} onSave={this.onSave} />
     } else {
       if (this.props.store.tasksToDo.toDo[0]) {
         dataToRender = <MainScreen onChange={this.onChange} value={this.props.store.task} done={this.onDone} add={this.onAdd} delete={this.onDelete} edit={this.onEdit} valueItem={this.props.store.tasksToDo.toDo[0].value} /> 

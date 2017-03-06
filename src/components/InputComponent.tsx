@@ -19,7 +19,10 @@ export class EditingComponent extends React.Component<InputComponentProps, {}> {
           message="Done" />
         <Button onClick={this.props.onCancel} 
           message="Cancel" />
-    
+        { this.props.peek && 
+          <Button onClick={this.props.peek}
+          message="What's next?" /> 
+        }    
       </div>
     );  
   }

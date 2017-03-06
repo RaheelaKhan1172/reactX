@@ -4396,9 +4396,9 @@ var ToDo = function (_React$Component) {
         value: function render() {
             var dataToRender = null; //change it so that certain views will only render based off of result
             if (this.props.store.peeking) {
-                dataToRender = this.props.store.tasksToDo.toDo[1] ? React.createElement(_PeekingComponent.PeekingComponent, { value: this.props.store.tasksToDo.toDo[1].value, onClick: this.props.store.peek, message: "Done" }) : React.createElement(_PeekingComponent.PeekingComponent, { value: "Nothing else to do", onClick: this.props.store.peek, message: "Done" });
+                dataToRender = this.props.store.tasksToDo.toDo[1] ? React.createElement(_PeekingComponent.PeekingComponent, { value: this.props.store.tasksToDo.toDo[1].value, onClick: this.props.store.peek, message: "Done" }) : React.createElement(_PeekingComponent.PeekingComponent, { value: "Nothing else to do", onClick: this.donePeeking, message: "Done" });
             } else if (this.props.store.editing) {
-                dataToRender = React.createElement(_InputComponent.EditingComponent, { value: this.props.store.task, onChange: this.onChange, onCancel: this.cancelEdit, onSave: this.onSave });
+                dataToRender = React.createElement(_InputComponent.EditingComponent, { value: this.props.store.task, onChange: this.onChange, onCancel: this.cancelEdit, peek: this.peek, onSave: this.onSave });
             } else {
                 if (this.props.store.tasksToDo.toDo[0]) {
                     dataToRender = React.createElement(_MainScreen.MainScreen, { onChange: this.onChange, value: this.props.store.task, done: this.onDone, add: this.onAdd, "delete": this.onDelete, edit: this.onEdit, valueItem: this.props.store.tasksToDo.toDo[0].value });
@@ -4471,7 +4471,8 @@ var EditingComponent = exports.EditingComponent = function (_React$Component) {
                 null,
                 React.createElement(_Input.Input, { value: this.props.value, onChange: this.props.onChange }),
                 React.createElement(_Button.Button, { onClick: this.props.onSave, message: "Done" }),
-                React.createElement(_Button.Button, { onClick: this.props.onCancel, message: "Cancel" })
+                React.createElement(_Button.Button, { onClick: this.props.onCancel, message: "Cancel" }),
+                this.props.peek && React.createElement(_Button.Button, { onClick: this.props.peek, message: "What's next?" })
             );
         }
     }]);

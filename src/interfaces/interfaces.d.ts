@@ -22,6 +22,7 @@ interface IInput {
 interface InputComponentProps extends IInput {
   onCancel: () => void;
   onSave: () => void;
+  peek: () => void;
 }
 
 interface IButton {
