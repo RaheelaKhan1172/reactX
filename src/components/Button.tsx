@@ -16,7 +16,9 @@ export class Button extends React.Component<IButton, {}> {
 
   render() {
     return (
-      <button name={this.props.name} 
+      <button 
+       className={this.props.className ? this.props.className + " btn" : "btn" }  
+       name={this.props.name} 
        onClick={this.onClick}>
          {this.props.message}
       </button>

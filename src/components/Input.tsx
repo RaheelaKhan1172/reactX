@@ -16,7 +16,8 @@ export class Input extends React.Component<IInput, {}> {
 
   render() {
     return (
-      <input type="text" 
+      <input 
+       type="text" 
        value={this.props.value}
        onChange={this.onChange}
        name={this.props.name} />

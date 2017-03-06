@@ -89,30 +89,17 @@ export class ToDo extends React.Component<IToDoProps,{}> {
       dataToRender = <EditingComponent value={this.props.store.task} onChange={this.onChange} onCancel={this.cancelEdit} peek={this.peek} onSave={this.onSave} />
     } else {
       if (this.props.store.tasksToDo.toDo[0]) {
-        dataToRender = <MainScreen onChange={this.onChange} value={this.props.store.task} done={this.onDone} add={this.onAdd} delete={this.onDelete} edit={this.onEdit} valueItem={this.props.store.tasksToDo.toDo[0].value} /> 
+        dataToRender = <MainScreen peek={this.peek} onChange={this.onChange} value={this.props.store.task} done={this.onDone} add={this.onAdd} delete={this.onDelete} edit={this.onEdit} valueItem={this.props.store.tasksToDo.toDo[0].value} /> 
       } else {
-        dataToRender = <MainScreen onChange={this.onChange} value={this.props.store.task} add={this.onAdd} done={null} delete={null} edit={null} valueItem="No tasks to do! Add something" />
+        dataToRender = <MainScreen peek={null} onChange={this.onChange} value={this.props.store.task} add={this.onAdd} done={null} delete={null} edit={null} valueItem="No tasks to do! Add something" />
       }
     } 
     
-    console.log(dataToRender,this.props.store.tasksToDo);
-   
     return (
-      <div>
+      <div id="toDo">
       { dataToRender }
       <DevTools />
       </div>
-    /*  <div>
-      <Button 
-       onClick={() => "hi"}
-       />
-      <Input value="cool"
-        onChange={() =>"not"}
-        name="test" />
-
-      <Item onEdit= {() => "editing" }
-        editing={false}/>
-    </div> */
     );
   }
   

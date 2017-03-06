@@ -28,6 +28,7 @@ interface InputComponentProps extends IInput {
 interface IButton {
   name?: string;
   message?:string;
+  className? :string;
   onClick?: () => void;
 }
 

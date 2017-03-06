@@ -21,7 +21,6 @@ class AppStore implements IAppStore {
   }
 
   @action addItem(text:string) {
-    console.log("text",text);
     this.tasksToDo.toDo.push(new ItemModel(text));
     this.task = "";
   }

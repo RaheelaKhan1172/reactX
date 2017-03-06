@@ -11,30 +11,47 @@ export class MainScreen extends React.Component<MainProps,{}> {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
+      <div className="inp">
       <Input onChange={this.props.onChange}
         value={this.props.value} />
-      <Button message="Add"
+      <Button className="add"
+        message="+"
         onClick={this.props.add} />
-      
-      { this.props.delete && 
-      <Button message="Delete" 
-        onClick= {this.props.delete} />
-      }
+      </div>
+     
+      <div className="item">
+        <div className="task_main">        
+       <Item value={this.props.valueItem}/>
 
-      { this.props.edit &&
-      <Button message="Edit" 
-        onClick={this.props.edit} />
-      }
+        { this.props.done &&
+          <Button className="finish"
+          message="Finished"
+          onClick={this.props.done} />
+        }
+        </div>
+        <div className="btn_group"> 
+        { this.props.peek &&
+          <Button className="next"
+          message="What's next?"
+          onClick={this.props.peek} />
+        }
+        
+        { this.props.delete && 
+        <Button className=""
+          message="Delete" 
+          onClick= {this.props.delete} />
+        }
 
-      {this.props.done &&
-      <Button message="Finished"
-        onClick={this.props.done} />
-      } 
-      <Item value={this.props.valueItem}/>
+        { this.props.edit &&
+          <Button className=""
+          message="Edit" 
+          onClick={this.props.edit} />
+        }
+      </div>
 
+      </div>
       </div>
     );
   }
