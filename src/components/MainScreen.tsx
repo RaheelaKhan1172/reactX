@@ -31,7 +31,7 @@ export class MainScreen extends React.Component<MainProps,{}> {
           onClick={this.props.done} />
         }
         </div>
-        <div className="btn_group"> 
+        <div className="Mt(10px) btn_group"> 
         { this.props.peek &&
           <Button className="next"
           message="What's next?"

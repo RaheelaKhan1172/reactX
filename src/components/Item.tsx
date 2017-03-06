@@ -12,7 +12,7 @@ export class Item extends React.Component<IItemProps, {}> {
   render() {
     console.log(this.props.value, "in item render");
     return (
-      <div className="task Fz(22px)"> 
+      <div className="task Fz(33px) Mt(10px) Mend(10px)"> 
         { this.props.value }
       </div>
     );

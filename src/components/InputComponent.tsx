@@ -12,17 +12,22 @@ export class EditingComponent extends React.Component<InputComponentProps, {}> {
 
   render() {
     return (
-      <div> 
+      <div className="item">
+        <div className="inp"> 
         <Input value={this.props.value} 
           onChange={this.props.onChange} />
-        <Button onClick={this.props.onSave}
-          message="Done" />
+        <Button className="add"
+          onClick={this.props.onSave}
+          message="+" />
+        </div>
+      <div className="btn_group"> 
         <Button onClick={this.props.onCancel} 
           message="Cancel" />
         { this.props.peek && 
           <Button onClick={this.props.peek}
           message="What's next?" /> 
         }    
+      </div>
       </div>
     );  
   }

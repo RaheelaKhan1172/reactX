@@ -13,9 +13,12 @@ export class PeekingComponent extends React.Component<PeekingProps, {}> {
   render() {
     return (
       <div>
+        <div className="H(62px)"></div>
+      <div className="item">
         <Item value={this.props.value} />
         <Button onClick={this.props.onClick}
           message={this.props.message} />
+      </div>
       </div> 
     );
   }
