@@ -1,0 +1,20 @@
+{
+    "transform": {
+       "^.+\\.(ts|tsx)$": "./preprocessor.js"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ],
+    "testRegex": "/tests/.*\\.(ts|tsx|js)$",
+    "globals": {
+      "__TS_CONFIG__": {
+        "module": "commonjs",
+        "jsx": "react"
+      }
+    }
+
+}

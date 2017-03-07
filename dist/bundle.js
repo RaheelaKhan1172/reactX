@@ -4204,7 +4204,7 @@ var AppStore = function () {
     }, {
         key: "editItem",
         value: function editItem() {
-            this.task = this.tasksToDo.toDo[0].value;
+            this.task = this.tasksToDo.toDo[0] ? this.tasksToDo.toDo[0].value : "";
             this.editing = true;
         }
     }, {
@@ -4221,15 +4221,17 @@ var AppStore = function () {
         key: "doneOrDelete",
         value: function doneOrDelete() {
             var newList = new _ListModel.ListModel();
-            for (var i = 1, j = 0; i < this.tasksToDo.toDo.length; i++, j++) {
-                newList[j] = this.tasksToDo.toDo[i];
+            for (var i = 1; i < this.tasksToDo.toDo.length; i++) {
+                newList.toDo.push(this.tasksToDo.toDo[i]);
             }
             this.tasksToDo = newList;
         }
     }, {
         key: "doneEditing",
         value: function doneEditing() {
-            this.tasksToDo.toDo[0].value = this.task;
+            if (this.tasksToDo.toDo[0]) {
+                this.tasksToDo.toDo[0].value = this.task;
+            }
             this.task = "";
             this.editing = false;
         }
@@ -4242,7 +4244,7 @@ var AppStore = function () {
     }, {
         key: "getCurrentTask",
         value: function getCurrentTask() {
-            return this.tasksToDo.toDo[0].value;
+            return this.tasksToDo.toDo[0] ? this.tasksToDo.toDo[0].value : "No tasks to do";
         }
     }]);
 
@@ -4395,7 +4397,7 @@ var ToDo = function (_React$Component) {
         value: function render() {
             var dataToRender = null; //change it so that certain views will only render based off of result
             if (this.props.store.peeking) {
-                dataToRender = this.props.store.tasksToDo.toDo[1] ? React.createElement(_PeekingComponent.PeekingComponent, { value: this.props.store.tasksToDo.toDo[1].value, onClick: this.props.store.peek, message: "Done" }) : React.createElement(_PeekingComponent.PeekingComponent, { value: "Nothing else to do", onClick: this.donePeeking, message: "Done" });
+                dataToRender = this.props.store.tasksToDo.toDo[1] ? React.createElement(_PeekingComponent.PeekingComponent, { value: this.props.store.tasksToDo.toDo[1].value, onClick: this.peek, message: "Done" }) : React.createElement(_PeekingComponent.PeekingComponent, { value: "Nothing else to do", onClick: this.donePeeking, message: "Done" });
             } else if (this.props.store.editing) {
                 dataToRender = React.createElement(_InputComponent.EditingComponent, { value: this.props.store.task, onChange: this.onChange, onCancel: this.cancelEdit, peek: this.peek, onSave: this.onSave });
             } else {

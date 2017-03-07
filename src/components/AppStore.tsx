@@ -26,7 +26,7 @@ class AppStore implements IAppStore {
   }
 
   @action editItem() {
-    this.task = this.tasksToDo.toDo[0].value;
+    this.task = this.tasksToDo.toDo[0]? this.tasksToDo.toDo[0].value : "";
     this.editing = true;
   }
 
@@ -40,15 +40,16 @@ class AppStore implements IAppStore {
 
   @action doneOrDelete() {
     let newList:IListOfItems = new ListModel();
-    for (var i = 1,j = 0; i < this.tasksToDo.toDo.length;i++,j++) {
-      newList[j] = this.tasksToDo.toDo[i];
-    }
-
+    for (var i = 1; i < this.tasksToDo.toDo.length;i++) {
+      newList.toDo.push(this.tasksToDo.toDo[i]);
+    } 
     this.tasksToDo = newList;
   }
 
   @action doneEditing() {
-    this.tasksToDo.toDo[0].value = this.task;
+    if (this.tasksToDo.toDo[0]) {
+      this.tasksToDo.toDo[0].value = this.task;
+    }
     this.task = "";
     this.editing = false;
   }
@@ -59,7 +60,7 @@ class AppStore implements IAppStore {
   }
 
   getCurrentTask() {
-    return this.tasksToDo.toDo[0].value;
+    return this.tasksToDo.toDo[0] ? this.tasksToDo.toDo[0].value : "No tasks to do";
   } 
 }
 

@@ -4,7 +4,7 @@
   "description": "typescript, react, jest, mobx, scss, atomic css",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config .jestrc --no-cache"
   },
   "author": "",
   "license": "ISC",

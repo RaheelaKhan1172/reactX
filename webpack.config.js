@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
   entry: "./main.tsx",
@@ -14,7 +15,6 @@ module.exports = {
   context: __dirname + "/src",
 
   devtool:"source-map",
-  
   module: {
     rules: [
       {
@@ -24,6 +24,7 @@ module.exports = {
           { loader: "babel-loader" },
           { loader:  "awesome-typescript-loader" }
         ],
+        exclude: [path.resolve(__dirname, "/tests"), ".jestrc"],
         include: __dirname + "/src"
       },
       {
@@ -33,7 +34,7 @@ module.exports = {
         enforce:"pre",
         test:/\.js$/,
         use:"source-map-loader",
-        exclude:"/node_modules/"
+        exclude:[path.resolve(__dirname, "preprocessor.js"),path.resolve(__dirname, "node_modules/"),path.resolve(__dirname, "tests")]
       },
     ]
   },
