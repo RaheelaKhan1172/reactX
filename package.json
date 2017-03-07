@@ -4,7 +4,8 @@
   "description": "typescript, react, jest, mobx, scss, atomic css",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config .jestrc --no-cache"
+    "start": "NODE_ENV=dev webpack",
+    "test": "NODE_ENV=test jest --config .jestrc --no-cache"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "babel-preset-react": "^6.23.0",
     "css-loader": "^0.26.2",
     "jest": "^19.0.2",
+    "jest-cli": "^19.0.2",
     "mobx-react-devtools": "^4.2.11",
     "node-sass": "^4.5.0",
     "sass-loader": "^6.0.2",

@@ -1,8 +1,10 @@
-
+//comment out bottom import for runnign tests -- hackish way to get webpack to build
+ import { test, expect, it, toBe,describe} from "jest";
 
 import { stateStore } from "../src/components/AppStore";
 
 var returnVal:string = stateStore.getCurrentTask();
+
 test("should add items correctly", () => {
   expect(stateStore.tasksToDo.toDo.length).toBe(0);
 
